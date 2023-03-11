@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TestShopAPI2.Controllers
 {
-    [Route("api/")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class OuterRim : ControllerBase
     {
@@ -15,14 +15,14 @@ namespace TestShopAPI2.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetLongExecution")]
-        public ActionResult<int> Get()
+        [HttpGet]
+        public ActionResult<int> LongExecution()
         {
             System.Threading.Thread.Sleep(50000);
             return 50000;
         }
 
-        [HttpGet(Name = "GetRandomExecution")]
+        [HttpGet]
         public ActionResult<int> RandomExecution()
         {
             var i = r.Next(1000);
